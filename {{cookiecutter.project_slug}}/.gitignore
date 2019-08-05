@@ -59,3 +59,13 @@ typings/
 
 # next.js build output
 .next
+
+# Jetbrains file
+.idea
+
+
+# Built file
+public/js/
+public/css/
+
+docs/build
