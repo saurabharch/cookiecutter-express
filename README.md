@@ -7,7 +7,7 @@ Cookiecutter template for a jQuery plugin. See https://github.com/audreyr/cookie
 #### Usage
 
 ```
-$ cookiecutter https://github.com/amritghimire/cookiecutter-express.git
+$ cookiecutter git@github.com:amritghimire/cookiecutter-express.git
 $ ... (fill out the values you want)
 $ make setup
 ```
