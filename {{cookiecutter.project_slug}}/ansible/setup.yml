@@ -1,0 +1,56 @@
+---
+- hosts: {{cookiecutter.project_slug}}
+  remote_user: {{cookiecutter.remote_user}}
+  tasks:
+  - name: Pull latest update from git
+    become: true
+    become_user: {{cookiecutter.remote_user}}
+    git:
+      repo: git@github.com:{{cookiecutter.git_project}}
+      dest: /home/{{cookiecutter.remote_user}}/{{cookiecutter.project_slug}}
+  - name: Copy env file
+    copy:
+      src: .env.production
+      dest: /home/{{cookiecutter.remote_user}}/{{cookiecutter.project_slug}}/.env
+      force: no
+    become: yes
+    become_user: {{cookiecutter.remote_user}}
+  - name: Run setup target
+    make:
+      chdir: /home/{{cookiecutter.remote_user}}/{{cookiecutter.project_slug}}
+      target: setup
+    become: yes
+    become_user: {{cookiecutter.remote_user}}
+  - name: PM2 Stop
+    command: pm2 stop {{cookiecutter.project_slug}}
+    become: true
+    become_user: safeuser
+    ignore_errors: true
+
+
+  - name: PM2 Start
+    command: pm2 start bin/www --name {{cookiecutter.project_slug}} -i max
+    become: true
+    become_user: safeuser
+    args:
+       chdir: /home/{{cookiecutter.remote_user}}/{{cookiecutter.project_slug}}
+
+  - name: Copy file with owner and permissions
+    copy:
+      src: ansible/apache.conf
+      dest: /etc/apache2/sites-available/{{cookiecutter.project_slug}}.conf
+      force: no
+    become: yes
+    become_user: root
+  - name: Enable apache module
+    command: a2ensite {{cookiecutter.project_slug}}
+    args:
+      creates: /etc/apache2/sites-enabled/{{cookiecutter.project_slug}}.conf
+    notify:
+      - restart apache2
+  - debug: msg="Run createuser and certbot"
+
+  handlers:
+    - name: restart apache2
+      service: name=apache2 state=restarted
+  

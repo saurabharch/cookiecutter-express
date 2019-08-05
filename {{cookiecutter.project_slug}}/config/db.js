@@ -1,10 +1,10 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var credential = require('./credential');
+const mongoose = require('mongoose');
+const credential = require('./credential');
 
 
-var opts =  {
+const opts =  {
     useNewUrlParser: true, useCreateIndex: true,
     keepAlive: 1
 };

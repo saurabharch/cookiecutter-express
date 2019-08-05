@@ -1,0 +1,22 @@
+---
+- hosts: {{cookiecutter.project_slug}}
+  remote_user: {{cookiecutter.remote_user}}
+  tasks:
+  - name: Pull latest update from git
+    become: true
+    become_user: {{cookiecutter.remote_user}}
+    git:
+      repo: git@github.com:{{cookiecutter.git_project}}
+      dest: /home/{{cookiecutter.remote_user}}/{{cookiecutter.project_slug}}
+  - name: Run setup target
+    make:
+      chdir: /home/{{cookiecutter.remote_user}}/{{cookiecutter.project_slug}}
+      target: setup
+    become: yes
+    become_user: {{cookiecutter.remote_user}}
+  - name: PM2 restart
+    command: pm2 restart www --update-env
+    register: hello
+    become: true
+    become_user: safeuser  
+  

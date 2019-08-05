@@ -1,0 +1,7 @@
+all:
+  children:
+    {{cookiecutter.project_slug}}:
+      hosts:
+        {{cookiecutter.remote_server}}:
+      vars:
+        ansible_user: {{cookiecutter.remote_user}}

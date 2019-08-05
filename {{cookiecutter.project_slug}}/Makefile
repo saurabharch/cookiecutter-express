@@ -29,19 +29,25 @@ endif
 COLOR=\x1b[36m
 NO_COLOR=\x1b[m]
 
-.PHONY: docs
-## Build and open documentation
-docs:
-	$(MAKE) -C docs html
-	xdg-open docs/build/html/index.html
-
 .PHONY: setup
 ## Setup the project 
 setup: 
 	cp -nv env.example .env
+	cp -nv env.production .env.production
 	@npm install
+	@npx webpack
 	@echo 'Create admin user using make createuser'
 
+.PHONY: remote_update
+## Update the remote with master code
+remote_update:
+	@ansible-playbook ansible/playbook.yml -i ansible/inventory.yml
+
+.PHONY: remote_setup
+## Setup the remote server 
+remote_setup:
+	@ansible-playbook ansible/setup.yml -i ansible/inventory.yml
+	@echo "Setup certbot and user account"
 
 .PHONY: install
 ## Install npm packages
@@ -90,6 +96,7 @@ build_docs:
 test:
 	@npm run jshint
 	@npm run test
+
 
 .DEFAULT_GOAL := help
 

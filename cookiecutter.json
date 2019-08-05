@@ -1,0 +1,18 @@
+{
+    "project_slug": "my-project",
+    "project_url": "example.com",
+    "project_static_url": "cdn.example.com",
+    "app_title": "My project",
+    "description": "  ",
+    "year": 2019,
+    "full_name": "Amrit Ghimire",
+    "version": "0.1.0",
+    "secret_key": "MY SECRET KEY",
+    "remote_server": "example.com",
+    "remote_user": "example",
+    "port": 3000,
+    "git_project": "amritghimire/my-project",
+    "_copy_without_render": [
+        "*.hbs"
+    ]
+}

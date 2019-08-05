@@ -176,17 +176,17 @@ app.use(session({
     store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 app.use(csurf());
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 app.use(function (req, res, next) {
     res.locals.csrf_token = req.csrfToken();
     res.locals.info_message = req.flash('info');
     res.locals.error_message = req.flash('error');
     next();
 });
-
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
-
 // Add routes here
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
