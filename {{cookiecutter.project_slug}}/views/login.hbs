@@ -1,0 +1,20 @@
+<h1>Login</h1>
+<h2>Sign in with </h2>
+<h3><a href="/auth/facebook">Facebook</a>  <a href="/auth/google"> Google</a></h3>
+
+<div>
+    {{#if error_message}}
+        {{{error_message}}}
+    {{/if}}
+
+    {{#if info_message}}
+        {{{info_message}}}
+    {{/if}}
+</div>
+
+<form action="/login" method="POST">
+    <input type="hidden" name="_csrf" value="{{{csrf_token}}}">
+    Username : <input type="text" name="username" id="username"> <br>
+    Password : <input type="password" name="password" id="password"> <br>
+    <input type="submit" value="Login">
+</form>

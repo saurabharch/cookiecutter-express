@@ -3,15 +3,33 @@
   "version": "{{cookiecutter.version}}",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "run": "nodemon",
+    "build": "webpack",
+    "webpack:watch": "webpack --watch",
+    "jshint": "jshint . --exclude-path .jshintignore --exclude public/vendor",
+    "test": "NODE_ENV=test mocha test --exit",
+    "createuser": "node createuser.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "csurf": "^1.10.0",
     "debug": "~2.6.9",
+    "dotenv": "^8.0.0",
     "express": "~4.16.1",
     "hbs": "~4.0.4",
+    "helmet": "^3.20.0",
     "http-errors": "~1.6.3",
+    "jshint": "^2.10.2",
     "morgan": "~1.9.1",
-    "node-sass-middleware": "0.11.0"
+    "node-sass-middleware": "0.11.0",
+    "nodemon": "^1.19.1",
+    "webpack": "^4.39.1"
+  },
+  "nodemonConfig":{
+      "ignore": [
+          "assets/*",
+          "public/*"
+      ]
   }
 }
