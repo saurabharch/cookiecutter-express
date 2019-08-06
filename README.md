@@ -47,6 +47,22 @@ Then:
 * Install sphinx-autobuild to start building docs.
 * Read the generated Readme file for more detail.
 
+Reference
+----------
+* `project_slug` : It is used as unique slug for the project in many place like apache config.
+* `peoject_url` : The production server for the project.
+* `project_static_url` : The cdn server for static files, specify same as project_url if otherwise. 
+* `app_title`: Title of project 
+* `description` : Description of project for package.json file.
+* `year` : Current year for LICENSE FILE
+* `version` : Version for package.json 
+* `secret_key` : Secret key for signing the session cookie
+* `remote_server`: The remote server ip or hostname where ansible will be connecting to.
+* `remote_user` : The remote user to be logged in as.
+* `port` : Specify default port. 
+* `git_project` : Git project url where the server will be updated from. 
+
+
 ### Fork This / Create Your Own
 
 If you have differences in your preferred setup, I encourage you to fork this
