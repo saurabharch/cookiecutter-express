@@ -27,6 +27,9 @@ setup:
 	@npm install
 	@npx webpack
 	@echo 'Create admin user using make createuser'
+	@echo 'Update the fingerprint in circleci config'
+	@echo 'Update the ssh key in circleci from settings'
+	@echo 'Add ANSIBLE_HOST_KEY_CHECKING  =false environment variable. '
 
 .PHONY: remote_update
 ## Update the remote with master code

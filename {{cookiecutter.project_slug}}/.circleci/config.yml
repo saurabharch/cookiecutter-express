@@ -13,6 +13,7 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/mongo:latest
+      - image: circleci/python:latest
 
     working_directory: ~/{{cookiecutter.project_slug}}
 
@@ -59,6 +60,7 @@ jobs:
           command: npm run jshint
 
       # run tests!
+      - run: cp env.example .env
       - run: npm run test
 
       - run:
@@ -81,10 +83,14 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/mongo:latest
+      - image: circleci/python:latest
 
     working_directory: ~/{{cookiecutter.project_slug}}
 
     steps:
+      - add_ssh_keys:
+              fingerprints:
+                      - "XX:XX:XX:XX:XX:XX:XX:XX"
       - checkout
 
       # Download and cache dependencies
@@ -94,6 +100,14 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run: make setup
+      - run:
+              name: Install dependencies
+               command: |
+                    sudo apt install python3-venv
+                    python3 -m venv env
+                    . env/bin/activate
+                    pip install ansible
+                    make remote_update
 
       - run: make remote_update
 workflows:
