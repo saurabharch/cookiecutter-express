@@ -18,6 +18,8 @@ const sentry = require('@sentry/node');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const rfs = require('rotating-file-stream');
+const fs = require('fs');
 
 
 // Import helpers here
@@ -152,10 +154,13 @@ switch (app.get('env')) {
         app.use(logger('dev'));
         break;
     case 'production':
-        app.use(require('express-logger')({
-            path: __dirname + '/log/requests.log'
-        }));
-        console.log('Production server running');
+        const logDirectory = path.join(__dirname,'log');
+        fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
+        const accessLogStream = rfs('access.log', {
+            interval: '1d', // rotate daily
+              path: logDirectory
+        });
+        app.use(morgan('combined', { stream: accessLogStream }))
         break;
 }
 
