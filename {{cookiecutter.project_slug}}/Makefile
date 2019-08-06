@@ -15,11 +15,6 @@ ifndef NPM
     $(error npx is not installed in your system, please install npx using npm install -g npx)
 endif
 
-SPHINX := $(shell command -v sphinx-autobuild 2> /dev/null)
-ifndef SPHINX
-    $(error sphinx autobuild is not installed in your system, please install it using pip install sphinx-autobuild)
-endif
-
 MONGO := $(shell command -v mongo --version 2> /dev/null)
 ifndef MONGO
    $(error mongo is not installed in your system, please install mongo)

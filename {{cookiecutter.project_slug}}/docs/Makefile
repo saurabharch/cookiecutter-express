@@ -7,6 +7,11 @@ SPHINXOPTS    ?= --open-browser
 SPHINXBUILD   ?= sphinx-autobuild
 SOURCEDIR     = source
 BUILDDIR      = build
+SPHINX := $(shell command -v sphinx-autobuild 2> /dev/null)
+ifndef SPHINX
+    $(error sphinx autobuild is not installed in your system, please install it using pip install sphinx-autobuild)
+endif
+
 
 # Put it first so that "make" without argument is like "make help".
 help:
