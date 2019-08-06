@@ -33,7 +33,7 @@ NO_COLOR=\x1b[m]
 ## Setup the project 
 setup: 
 	@cp -nv env.example .env
-	@cp -nv env.production .env.production
+	@cp -nv env.production ansible/.env.production
 	@npm install
 	@npx webpack
 	@echo 'Create admin user using make createuser'

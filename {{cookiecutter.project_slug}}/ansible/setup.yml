@@ -37,7 +37,7 @@
 
   - name: Copy file with owner and permissions
     copy:
-      src: ansible/apache.conf
+      src: apache.conf
       dest: /etc/apache2/sites-available/{{cookiecutter.project_slug}}.conf
       force: no
     become: yes
