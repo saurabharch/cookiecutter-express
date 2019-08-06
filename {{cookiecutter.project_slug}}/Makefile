@@ -15,11 +15,6 @@ ifndef NPM
     $(error npx is not installed in your system, please install npx using npm install -g npx)
 endif
 
-MONGO := $(shell command -v mongo --version 2> /dev/null)
-ifndef MONGO
-   $(error mongo is not installed in your system, please install mongo)
-endif
-
 .DEFAULT_GOAL := help
 COLOR=\x1b[36m
 NO_COLOR=\x1b[m]
