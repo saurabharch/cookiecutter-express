@@ -42,10 +42,13 @@ User.register(new User({
     if (err) {
         console.log('Ouch we reached an error');
         console.log(err.message);
+        process.exit(0);
+
     } else {
         console.log('Account created');
         console.log(account._id);
+        process.exit(0);
+
     }
 });
-process.exit(0);
 
