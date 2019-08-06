@@ -2,12 +2,14 @@
 
 Cookiecutter template for a jQuery plugin. See https://github.com/audreyr/cookiecutter.
 
-* Free software: MIT license
 
 #### Usage
 
+Install cookiecutter: See https://github.com/audreyr/cookiecutter.
+
+
 ```
-$ cookiecutter https://github.com/amritghimire/cookiecutter-express.git
+$ cookiecutter git@github.com:amritghimire/cookiecutter-express.git
 $ ... (fill out the values you want)
 $ make setup
 ```
