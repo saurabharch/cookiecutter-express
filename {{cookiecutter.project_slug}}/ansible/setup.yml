@@ -40,12 +40,12 @@
       src: apache.conf
       dest: /etc/apache2/sites-available/{{cookiecutter.project_slug}}.conf
       force: no
-    become: yes
-    become_user: root
+    become: true
   - name: Enable apache module
     command: a2ensite {{cookiecutter.project_slug}}
     args:
       creates: /etc/apache2/sites-enabled/{{cookiecutter.project_slug}}.conf
+    become: true
     notify:
       - restart apache2
   - debug: msg="Run createuser and certbot"
@@ -53,4 +53,5 @@
   handlers:
     - name: restart apache2
       service: name=apache2 state=restarted
+      become: true
   

@@ -46,7 +46,7 @@ remote_update:
 .PHONY: remote_setup
 ## Setup the remote server 
 remote_setup:
-	@ansible-playbook ansible/setup.yml -i ansible/inventory.yml
+	@ansible-playbook ansible/setup.yml -i ansible/inventory.yml --ask-become-pass
 	@echo "Setup certbot and user account"
 
 .PHONY: install

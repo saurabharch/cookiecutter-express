@@ -11,6 +11,7 @@ dependencies:
   dotenv: 8.0.0
   express: 4.16.4
   express-handlebars: 3.1.0
+  express-logger: 0.0.3
   express-session: 1.16.2
   express-user-model: 0.1.0
   hbs: 4.0.4
@@ -1717,6 +1718,15 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Y95urWNGrAoKY2w31s7Q9Gs/W3qdMCshUIeDTgulssHi6KueYtz4XrbV3kcnQaR8EcBQvooNNX7aOaAJDgudag==
+  /connect/1.9.2:
+    dependencies:
+      formidable: 1.0.16
+      mime: 2.4.4
+      qs: 6.7.0
+    deprecated: connect 1.x series is deprecated
+    dev: false
+    resolution:
+      integrity: sha1-QogKIulDiuWait105Df1iujlKAc=
   /console-browserify/1.1.0:
     dependencies:
       date-now: 0.1.4
@@ -1973,6 +1983,14 @@ packages:
   /date-now/0.1.4:
     resolution:
       integrity: sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
+  /datetime/0.0.3:
+    dependencies:
+      vows: 0.8.2
+    dev: false
+    engines:
+      node: '>=0.4.0'
+    resolution:
+      integrity: sha1-+pCG0g+B1U53dqgYDucyCuNn7Xg=
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -2084,6 +2102,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-8NZtA2cqglyxtzvbP+YjEMjlUrc=
+  /diff/1.0.8:
+    dev: false
+    engines:
+      node: '>=0.3.1'
+    resolution:
+      integrity: sha1-NDJ2MI7Jkbe8giZ+1VvBQR+XFmY=
   /diff/3.5.0:
     dev: true
     engines:
@@ -2411,6 +2435,16 @@ packages:
       node: '>=0.10'
     resolution:
       integrity: sha512-7QlaXnSREMmN5P2o4gmpUZDfJlLtfBka9d6r7/ccXaU7rPp76odw9YYtwZYdIiha2JqwiaG6o2Wu6NZJQ0u7Fg==
+  /express-logger/0.0.3:
+    dependencies:
+      datetime: 0.0.3
+      express: 2.5.9
+      mkdir: 0.0.2
+    dev: false
+    engines:
+      node: '>=0.4.0'
+    resolution:
+      integrity: sha1-cC/WJ9uN8aSeWo/hPOdos/cJuH4=
   /express-session/1.16.2:
     dependencies:
       cookie: 0.3.1
@@ -2432,6 +2466,19 @@ packages:
     dev: false
     resolution:
       integrity: sha512-3JRX+RzLaTexduzrHAYY87YFKGB17z7rdBW1F1Rqv7lSZiTol9d/yEMo0wjLlpeUYi3PMHa11sXdvo9OG2Mzyg==
+  /express/2.5.9:
+    dependencies:
+      connect: 1.9.2
+      mime: 1.2.4
+      mkdirp: 0.3.0
+      qs: 0.4.2
+    deprecated: express 2.x series is deprecated
+    dev: false
+    engines:
+      node: '>= 0.4.1 < 0.7.0'
+    hasBin: true
+    resolution:
+      integrity: sha1-YtERzKzPQlGC4fMOVB+EtVGnLyw=
   /express/4.16.4:
     dependencies:
       accepts: 1.3.7
@@ -2513,6 +2560,12 @@ packages:
       '0': node >=0.6.0
     resolution:
       integrity: sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
+  /eyes/0.1.8:
+    dev: false
+    engines:
+      node: '> 0.1.90'
+    resolution:
+      integrity: sha1-Ys8SAjTGg3hdkCNIqADvPgzCC8A=
   /fast-deep-equal/2.0.1:
     resolution:
       integrity: sha1-ewUhjd+WZ79/Nwv3/bLLFf3Qqkk=
@@ -2663,6 +2716,12 @@ packages:
       node: '>= 0.12'
     resolution:
       integrity: sha512-WXieX3G/8side6VIqx44ablyULoGruSde5PNTxoUyo5CeyAMX6nVWUd0rgist/EuX655cjhUhTo1Fo3tRYqbcA==
+  /formidable/1.0.16:
+    dev: false
+    engines:
+      node: '>=0.8.0'
+    resolution:
+      integrity: sha1-SRbP38TL7QILJXpqlQWpqzjCzQ4=
   /formidable/1.2.1:
     dev: true
     resolution:
@@ -4060,6 +4119,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-WaFHS3MCl5fapm3oLxU4eYDw77IQM2ACcxQ9RIxfaC3ooc6PFuBMGZZsYpvoXS5D5QTWPieo1jjLdAm3TBP3cQ==
+  /mime/1.2.4:
+    dev: false
+    resolution:
+      integrity: sha1-EbX9rynCUJJVF2uArVIClPXekrc=
   /mime/1.4.1:
     dev: false
     hasBin: true
@@ -4138,6 +4201,16 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-T7lJRB2rGCVA8f4DW6YOGUel5X4=
+  /mkdir/0.0.2:
+    dev: false
+    engines:
+      node: '>=0.4.0'
+    resolution:
+      integrity: sha1-O52npOWxMATrxjZYGxYOHgR3aFE=
+  /mkdirp/0.3.0:
+    dev: false
+    resolution:
+      integrity: sha1-G79asbqCevI1dRQ0kEJkVfSB/h4=
   /mkdirp/0.5.1:
     dependencies:
       minimist: 0.0.8
@@ -5123,6 +5196,10 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
+  /qs/0.4.2:
+    dev: false
+    resolution:
+      integrity: sha1-PKxMhh43GoycR3CsI82o3mObjl8=
   /qs/6.5.2:
     dev: false
     engines:
@@ -6490,6 +6567,15 @@ packages:
   /vm-browserify/1.1.0:
     resolution:
       integrity: sha512-iq+S7vZJE60yejDYM0ek6zg308+UZsdtPExWP9VZoCFCz1zkJoXFnAX7aZfd/ZwrkidzdUZL0C/ryW+JwAiIGw==
+  /vows/0.8.2:
+    dependencies:
+      diff: 1.0.8
+      eyes: 0.1.8
+      glob: 7.1.4
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha1-aR95qybM3oC6cm3en+yOc9a88us=
   /walk/2.3.9:
     dependencies:
       foreachasync: 3.0.0
@@ -6791,6 +6877,7 @@ specifiers:
   dotenv: ^8.0.0
   express: ~4.16.1
   express-handlebars: ^3.1.0
+  express-logger: ^0.0.3
   express-session: ^1.16.2
   express-user-model: ^0.1.0
   hbs: ~4.0.4
