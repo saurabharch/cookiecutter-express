@@ -5,7 +5,7 @@
 module.exports = {
     Index: function (req, res, next) { /* jshint unused: false */
         res.render('index', {
-            title: 'CareTracking '
+            title: '{{cookiecutter.app_title}}'
         });
     },
     getLogin: function (req, res) {
