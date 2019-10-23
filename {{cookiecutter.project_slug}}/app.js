@@ -20,6 +20,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const rfs = require('rotating-file-stream');
 const fs = require('fs');
+const morgan = require('morgan');
 
 
 // Import helpers here
@@ -155,12 +156,14 @@ switch (app.get('env')) {
         break;
     case 'production':
         const logDirectory = path.join(__dirname,'log');
-        fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
+        if(!fs.existsSync(logDirectory)){
+            fs.mkdirSync(logDirectory);
+        }
         const accessLogStream = rfs('access.log', {
             interval: '1d', // rotate daily
               path: logDirectory
         });
-        app.use(morgan('combined', { stream: accessLogStream }))
+        app.use(morgan('combined', { stream: accessLogStream }));
         break;
 }
 
